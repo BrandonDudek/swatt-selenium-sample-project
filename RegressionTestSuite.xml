@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Google Regressions Test Suite" group-by-instances="true">
+
+    <listeners>
+        <listener class-name="org.testng.reporters.TestHTMLReporter"/> <!-- On by default, when running through maven. -->
+        <listener class-name="org.testng.reporters.XMLReporter"/> <!-- On by default, when running through maven. -->
+    </listeners>
+
+    <test name="Google Regressions Test">
+
+        <classes>
+
+            <class name="xyz.swatt.selenium_sample.tests.SearchTests"/>
+
+        </classes>
+
+    </test>
+
+</suite>

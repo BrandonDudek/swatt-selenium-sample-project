@@ -1,2 +1,5 @@
-/.idea/workspace.xml
-/.idea/dictionaries/
+.idea/
+!.idea/misc.xml
+!.idea/modules.xml
+!.idea/swatt-selenium-sample-project.iml
+/test-output/
