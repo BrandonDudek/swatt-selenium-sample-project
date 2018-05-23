@@ -18,13 +18,13 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!--===== Library Versions =====-->
-        <swatt.version>1.0.0-SNAPSHOT</swatt.version>
+        <swatt.version>1.0.0</swatt.version>
 
     </properties>
 
     <repositories>
 
-        <!-- We do not recommend using Snapshots. -->
+        <!-- We do not recommend using Snapshots.
         <repository>
             <id>oss-sonatype</id>
             <name>oss-sonatype</name>
@@ -35,7 +35,7 @@
             <releases>
                 <enabled>false</enabled>
             </releases>
-        </repository>
+        </repository> -->
 
     </repositories>
 
