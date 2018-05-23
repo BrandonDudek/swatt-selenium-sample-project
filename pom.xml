@@ -9,6 +9,11 @@
     <artifactId>swatt-selenium-sample-project</artifactId>
     <version>1.0.0</version>
 
+    <packaging>jar</packaging>
+    <name>Swatt Selenium Sample Project</name>
+    <description>Selenium Sample Project using the Software Automated Testing Tools (SWATT).</description>
+    <url>https://swatt.xyz</url>
+
     <properties>
 
         <!--===== Maven Build =====-->
@@ -119,5 +124,28 @@
         </plugins>
 
     </build>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Brandon Dudek</name>
+            <email>19555354+BrandonDudek@users.noreply.github.com</email>
+            <organization>SWATT</organization>
+            <organizationUrl>https://swatt.xyz</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/BrandonDudek/swatt-selenium-sample-project.git</connection>
+        <developerConnection>scm:git:ssh://github.com:BrandonDudek/swatt-selenium-sample-project.git</developerConnection>
+        <url>http://github.com/BrandonDudek/swatt-selenium-sample-project/tree/master</url>
+    </scm>
 
 </project>
