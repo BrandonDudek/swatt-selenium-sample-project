@@ -26,6 +26,9 @@ public class Globals {
         {
             add(WebDriverWrapper.ChromeBrowser.CHROME);
             add(WebDriverWrapper.FirefoxBrowser.FIREFOX);
+            if(!WebDriverWrapper.IS_MAC) {
+                add(WebDriverWrapper.IEBrowser.IE_WIN_32);
+            }
         }
     };
 

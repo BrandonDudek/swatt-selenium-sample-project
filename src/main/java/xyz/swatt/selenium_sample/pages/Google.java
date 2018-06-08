@@ -39,7 +39,6 @@ public class Google {
 
     //========================= CONSTANTS ======================================
     private final WebDriverWrapper DRIVER;
-    private final WebElementWrapper SEARCH_INPUT;
 
     //========================= Variables ======================================
 
@@ -63,21 +62,22 @@ public class Google {
 
         //-------------------------Code-----------------------------------------
         if(_browserType instanceof BrowserVersion) {
-            DRIVER = new WebDriverWrapper((BrowserVersion)_browserType);
+            DRIVER = new WebDriverWrapper((BrowserVersion) _browserType);
         }
         else if(_browserType instanceof WebDriverWrapper.ChromeBrowser) {
-            DRIVER = new WebDriverWrapper((WebDriverWrapper.ChromeBrowser)_browserType);
+            DRIVER = new WebDriverWrapper((WebDriverWrapper.ChromeBrowser) _browserType);
         }
         else if(_browserType instanceof WebDriverWrapper.FirefoxBrowser) {
-            DRIVER = new WebDriverWrapper((WebDriverWrapper.FirefoxBrowser)_browserType);
+            DRIVER = new WebDriverWrapper((WebDriverWrapper.FirefoxBrowser) _browserType);
+        }
+        else if(_browserType instanceof WebDriverWrapper.IEBrowser) {
+            DRIVER = new WebDriverWrapper((WebDriverWrapper.IEBrowser) _browserType);
         }
         else {
             throw new IllegalArgumentException("The given Browser Type (" + _browserType + ") is unknown!");
         }
 
         goHome();
-
-        SEARCH_INPUT = DRIVER.getWebElementWrapper(SEARCH_INPUT_SELECTOR, true, "Could not find Search input!");
 
         LOGGER.debug("Google(_browserType: {}) [END]", _browserType);
     }
@@ -97,9 +97,11 @@ public class Google {
     	//------------------------ CONSTANTS -----------------------------------
 
     	//------------------------ Variables -----------------------------------
+        WebElementWrapper searchInput = DRIVER.getWebElementWrapper(SEARCH_INPUT_SELECTOR, true,
+                "Could not find Search input!");
 
     	//------------------------ Code ----------------------------------------
-        SEARCH_INPUT.clearInput();
+        searchInput.clearInput();
 
         ////////// Validate //////////
         String value = getSearchInputValue();
@@ -169,9 +171,11 @@ public class Google {
 
     	//------------------------ Variables -----------------------------------
         String toRet;
+        WebElementWrapper searchInput = DRIVER.getWebElementWrapper(SEARCH_INPUT_SELECTOR, true,
+                "Could not find Search input!");
 
     	//------------------------ Code ----------------------------------------
-    	toRet = SEARCH_INPUT.getValue();
+    	toRet = searchInput.getValue();
 
     	if(toRet == null) {
     	    toRet = "";
@@ -260,12 +264,15 @@ public class Google {
         //------------------------ CONSTANTS -----------------------------------
 
         //------------------------ Variables -----------------------------------
+        WebElementWrapper searchInput = DRIVER.getWebElementWrapper(SEARCH_INPUT_SELECTOR, true,
+                "Could not find Search input!");
+
         List<SearchResult> toRet;
 
         //------------------------ Code ----------------------------------------
         setSearchInput(_searchString); // Validation done in method.
 
-        SEARCH_INPUT.sendKeys(Keys.ENTER);
+        searchInput.sendKeys(Keys.ENTER);
 
         ////////// Wait //////////
         DRIVER.waitForPageLoad();
@@ -310,6 +317,9 @@ public class Google {
     	//------------------------ CONSTANTS -----------------------------------
 
     	//------------------------ Variables -----------------------------------
+        WebElementWrapper searchInput = DRIVER.getWebElementWrapper(SEARCH_INPUT_SELECTOR, true,
+                "Could not find Search input!");
+
         Set<String> toRet;
 
     	//------------------------ Code ----------------------------------------
@@ -317,7 +327,7 @@ public class Google {
 
         if(!_searchString.isEmpty()) {
 
-            SEARCH_INPUT.sendKeys(_searchString);
+            searchInput.sendKeys(_searchString);
 
             ///// Validate /////
             String expectedValue = StringHelper.replace(_searchString, "", StringHelper.CharacterPosition.ANYWHERE, false,
