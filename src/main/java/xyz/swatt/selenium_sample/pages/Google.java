@@ -27,7 +27,7 @@ public class Google {
     private static final Logger LOGGER = LogManager.getLogger(Google.class);
     private static final String BASE_URL = "https://www.google.com";
 
-    private static final By SEARCH_INPUT_SELECTOR = By.id("lst-ib");
+    private static final By SEARCH_INPUT_SELECTOR = By.cssSelector("#tsf input[name=q]");
 
     //========================= Static Variables ===============================
 
@@ -264,12 +264,15 @@ public class Google {
         //------------------------ CONSTANTS -----------------------------------
 
         //------------------------ Variables -----------------------------------
-        WebElementWrapper searchInput = DRIVER.getWebElementWrapper(SEARCH_INPUT_SELECTOR, true,
-                "Could not find Search input!");
+        WebElementWrapper searchInput = DRIVER.getWebElementWrapper(SEARCH_INPUT_SELECTOR, true);
 
         List<SearchResult> toRet;
 
         //------------------------ Code ----------------------------------------
+        if(searchInput == null) {
+            throw new WebPageException("Could not find the Search input!");
+        }
+
         setSearchInput(_searchString); // Validation done in method.
 
         searchInput.sendKeys(Keys.ENTER);
