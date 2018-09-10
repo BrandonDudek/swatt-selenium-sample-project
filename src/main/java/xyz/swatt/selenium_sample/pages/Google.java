@@ -12,7 +12,10 @@ import xyz.swatt.selenium.WebDriverWrapper;
 import xyz.swatt.selenium.WebElementWrapper;
 import xyz.swatt.string.StringHelper;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * This is the starting point for the Google Pages API.
@@ -45,6 +48,8 @@ public class Google {
     //========================= Constructors ===================================
     /**
      * Will load the Web Browser, go to the Google homepage, and validate that we are there.
+     *
+     * @throws IllegalArgumentException If the given Browser Type is unknown.
      *
      * @author Brandon Dudek (<a href="github.com/BrandonDudek">BrandonDudek</a>)
      */

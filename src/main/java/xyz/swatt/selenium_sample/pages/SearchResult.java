@@ -27,10 +27,12 @@ public class SearchResult {
 
     //========================= CONSTANTS ======================================
     private final Google GOOGLE; // Page classes always need a reference to a parent or base page class.
+
+    // For Partial Page Classes, always keep a reference to the Root Element, to easily get Statuses and Decedents.
     private final WebElementWrapper ROOT;
 
     //========================= Variables ======================================
-    String description, title, url;
+    private String description, title, url;
 
     //========================= Constructors ===================================
     /**
@@ -38,7 +40,7 @@ public class SearchResult {
      *
      * @author Brandon Dudek (<a href="github.com/BrandonDudek">BrandonDudek</a>)
      */
-    public SearchResult(Google _google, WebElementWrapper _root) {
+    SearchResult(Google _google, WebElementWrapper _root) {
 
         super();
 
